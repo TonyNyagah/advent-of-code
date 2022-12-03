@@ -43,11 +43,14 @@ def getData(txt_file) -> list:
     return data_list
 
 
+def splitData(data: list) -> list:
+    split_data = []
+
+
 def main():
     data = getData("test.txt")
 
     print(data)
-
     print([len(x) for x in data])
 
 
