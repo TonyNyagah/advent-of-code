@@ -57,7 +57,10 @@ def splitData(data: list) -> list:
 
 def commonItems(data: list) -> list:
     """Looks for common items in each list of lists received by the function."""
-    pass
+    common_items = []
+
+    for n in data:
+        print(n[0], n[1])
 
 
 def main():
@@ -65,6 +68,8 @@ def main():
     split_data = splitData(data)
 
     print(split_data)
+
+    commonItems(split_data)
 
 
 if __name__ == "__main__":
