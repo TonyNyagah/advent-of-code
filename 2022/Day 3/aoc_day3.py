@@ -65,6 +65,12 @@ def commonItems(data: list) -> list:
     return common_items
 
 
+def countUniqueItems(list_of_sets: list) -> int:
+    result = 0
+    for n in list_of_sets:
+        print(n.pop())
+
+
 def main():
     data = getData("test.txt")
     split_data = splitData(data)
