@@ -44,16 +44,14 @@ def getData(txt_file) -> list:
 
 
 def splitData(data: list) -> list:
-    first_compartment, second_compartment = (
-        data[: len(data) // 2],
-        data[len(data) // 2 :],
-    )
     split_data = []
 
     for n in data:
-        pass
+        first_compartment = n[: len(n) // 2]
+        second_compartment = n[len(n) // 2 :]
+        split_data.append([first_compartment, second_compartment])
 
-    pass
+    return split_data
 
 
 def main():
