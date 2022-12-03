@@ -79,7 +79,7 @@ def countUniqueItems(list_of_sets: list) -> int:
 
 
 def main():
-    data = getData("test.txt")
+    data = getData("aoc_day3_input.txt")
     split_data = splitData(data)
     common_items = commonItems(split_data)
     unique_item_count = countUniqueItems(common_items)
