@@ -45,12 +45,16 @@ def getData(txt_file) -> list:
 
 def splitData(data: list) -> list:
     """Split each value in the received data into two separate values."""
-    split_data = []
+    # split_data = []
 
-    for n in data:
-        first_compartment = n[: len(n) // 2]
-        second_compartment = n[len(n) // 2 :]
-        split_data.append([first_compartment, second_compartment])
+    # for n in data:
+    #     first_compartment = n[: len(n) // 2]
+    #     second_compartment = n[len(n) // 2 :]
+    #     split_data.append([first_compartment, second_compartment])
+
+    first_compartment = n[: len(n) // 2]
+    second_compartment = n[len(n) // 2 :]
+    split_data = [[first_compartment, second_compartment] for n in range(data)]
 
     return split_data
 
