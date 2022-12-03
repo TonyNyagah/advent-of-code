@@ -52,8 +52,8 @@ def splitData(data: list) -> list:
     #     second_compartment = n[len(n) // 2 :]
     #     split_data.append([first_compartment, second_compartment])
 
-    first_compartment = n[: len(n) // 2]
-    second_compartment = n[len(n) // 2 :]
+    first_compartment = data[: len(data) // 2]
+    second_compartment = data[len(data) // 2 :]
     split_data = [[first_compartment, second_compartment] for n in range(data)]
 
     return split_data
