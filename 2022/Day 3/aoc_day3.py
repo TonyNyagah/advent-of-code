@@ -56,6 +56,9 @@ def splitData(data: list) -> list:
 
 def main():
     data = getData("test.txt")
+    split_data = splitData(data)
+
+    print(split_data)
 
 
 if __name__ == "__main__":
