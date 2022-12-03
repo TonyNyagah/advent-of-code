@@ -5,6 +5,15 @@ def getData(txt_file) -> list:
     return data_list
 
 
+def partOne(data: list) -> list:
+    """Solves part 1"""
+    split_data = []
+
+    for n in data:
+        first_compartment = n[: len(n) // 2]
+        second_compartment = n[len(n) // 2 :]
+
+
 def splitDataPart1(data: list) -> list:
     """Split each value in the received data into two separate values."""
     split_data = []
