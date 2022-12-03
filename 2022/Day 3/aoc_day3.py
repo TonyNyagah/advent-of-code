@@ -12,7 +12,6 @@
 
 #     print([len(x) for x in data])
 
-
 import re
 
 
@@ -43,4 +42,9 @@ def find_common_letters(line):
     """
     first_compartment = line[: len(line) // 2]
     second_compartment = line[len(line) // 2 :]
-    common_letters
+    common_letters = set(first_compartment) & set(second_compartment)
+    return sum(ord(letter) - 96 for letter in common_letters)
+
+
+if __name__ == "__main__":
+    main()
