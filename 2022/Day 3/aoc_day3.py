@@ -27,7 +27,7 @@ def main():
     data = getData("aoc_day3_input.txt")
     part_one_result = partOne(data)
 
-    print(unique_item_count)
+    print(f"Part 1 answer: {part_one_result}")
 
 
 if __name__ == "__main__":
