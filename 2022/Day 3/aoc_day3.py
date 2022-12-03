@@ -68,10 +68,9 @@ def commonItems(data: list) -> list:
 def main():
     data = getData("test.txt")
     split_data = splitData(data)
+    common_items = commonItems(split_data)
 
-    print(split_data)
-
-    commonItems(split_data)
+    print(common_items)
 
 
 if __name__ == "__main__":
