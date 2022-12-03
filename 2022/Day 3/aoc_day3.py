@@ -67,8 +67,15 @@ def commonItems(data: list) -> list:
 
 def countUniqueItems(list_of_sets: list) -> int:
     result = 0
+
     for n in list_of_sets:
-        print(n.pop())
+        char = n.pop()
+        if char.isupper():
+            result += ord(char) - ord("A") + 27
+        else:
+            result += ord(char) - ord("a") + 1
+
+    return result
 
 
 def main():
