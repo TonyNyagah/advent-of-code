@@ -55,6 +55,11 @@ def splitData(data: list) -> list:
     return split_data
 
 
+def commonItems(data: list) -> list:
+    """Looks for common items in each list of lists received by the function."""
+    pass
+
+
 def main():
     data = getData("test.txt")
     split_data = splitData(data)
