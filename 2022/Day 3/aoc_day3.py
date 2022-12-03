@@ -5,7 +5,7 @@ def getData(txt_file) -> list:
     return data_list
 
 
-def splitData(data: list) -> list:
+def splitDataPart1(data: list) -> list:
     """Split each value in the received data into two separate values."""
     split_data = []
 
@@ -27,7 +27,7 @@ def commonItems(data: list) -> list:
     return common_items
 
 
-def countUniqueItems(list_of_sets: list) -> int:
+def countUniqueItemsPartOne(list_of_sets: list) -> int:
     """Count the number of unique items in a list of sets."""
     result = 0
 
@@ -41,11 +41,16 @@ def countUniqueItems(list_of_sets: list) -> int:
     return result
 
 
+def countUniqueItemsPartTwo(list_of_sets: list) -> int:
+    """Count the number of unique items in each set of 3 strings."""
+    result = 0
+
+
 def main():
     data = getData("aoc_day3_input.txt")
-    split_data = splitData(data)
+    split_data = splitDataPart1(data)
     common_items = commonItems(split_data)
-    unique_item_count = countUniqueItems(common_items)
+    unique_item_count = countUniqueItemsPartOne(common_items)
 
     print(unique_item_count)
 
