@@ -29,7 +29,9 @@ def partTwo(data: list) -> int:
     result = 0
 
     for n in range(0, len(data), 3):
-        print(n)
+        line1 = data[n]
+        line2 = data[n + 1]
+        line3 = data[n + 2]
 
 
 def main():
