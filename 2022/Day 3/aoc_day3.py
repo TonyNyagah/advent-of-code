@@ -15,19 +15,31 @@ def partOne(data: list) -> list:
 
         for char in set(first_compartment):
             if char in second_compartment:
-                result += ord(char) - ord("A") + 27
-            else:
-                result += ord(char) - ord("a") + 1
-            break
+                if char.isupper():
+                    result += ord(char) - ord("A") + 27
+                else:
+                    result += ord(char) - ord("a") + 1
+                break
 
     return result
+
+
+def partTwo(data: list) -> int:
+    """Solves part 2"""
+    result = 0
+
+    for n in range(0, len(data), 3):
+        print(n)
 
 
 def main():
     data = getData("aoc_day3_input.txt")
     part_one_result = partOne(data)
+    part_two_result = partTwo(data)
 
     print(f"Part 1 answer: {part_one_result}")
+
+    print(part_two_result)
 
 
 if __name__ == "__main__":
