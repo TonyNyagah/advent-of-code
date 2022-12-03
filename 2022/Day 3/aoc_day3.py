@@ -43,9 +43,13 @@ def getData(txt_file) -> list:
     return data_list
 
 
-if __name__ == "__main__":
+def main():
     data = getData("test.txt")
 
     print(data)
 
     print([len(x) for x in data])
+
+
+if __name__ == "__main__":
+    main()
