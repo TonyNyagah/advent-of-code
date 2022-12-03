@@ -60,7 +60,9 @@ def commonItems(data: list) -> list:
     common_items = []
 
     for n in data:
-        print(n[0], n[1])
+        common_items.append(set(n[0]).intersection(n[1]))
+
+    return common_items
 
 
 def main():
