@@ -2,7 +2,7 @@
 
 
 def getData(txt_file) -> list:
-    """Get data from a text file and remove new line characters."""
+    """Get data from a text file."""
     with open(txt_file, "r") as f:
         data_list = f.read().splitlines()
     return data_list
