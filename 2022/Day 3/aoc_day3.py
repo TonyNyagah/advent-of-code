@@ -66,6 +66,7 @@ def commonItems(data: list) -> list:
 
 
 def countUniqueItems(list_of_sets: list) -> int:
+    """Count the number of unique items in a list of sets."""
     result = 0
 
     for n in list_of_sets:
