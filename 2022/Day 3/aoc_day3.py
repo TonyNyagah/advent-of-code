@@ -44,6 +44,7 @@ def getData(txt_file) -> list:
 
 
 def splitData(data: list) -> list:
+    """Split each value in the received data into two separate values."""
     split_data = []
 
     for n in data:
