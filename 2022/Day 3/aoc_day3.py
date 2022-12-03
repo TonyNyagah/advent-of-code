@@ -32,6 +32,15 @@ def partTwo(data: list) -> int:
         line1 = data[n]
         line2 = data[n + 1]
         line3 = data[n + 2]
+        for char in set(line1):
+            if char in line2 and char in line3:
+                if char.isupper():
+                    result += ord(char) - ord("A") + 27
+                else:
+                    result += ord(char) - ord("a") + 1
+                break
+
+    return result
 
 
 def main():
@@ -40,8 +49,7 @@ def main():
     part_two_result = partTwo(data)
 
     print(f"Part 1 answer: {part_one_result}")
-
-    print(part_two_result)
+    print(f"Part 2 answer: {part_two_result}")
 
 
 if __name__ == "__main__":
