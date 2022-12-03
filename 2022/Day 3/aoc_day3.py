@@ -75,8 +75,9 @@ def main():
     data = getData("test.txt")
     split_data = splitData(data)
     common_items = commonItems(split_data)
+    unique_item_count = countUniqueItems(common_items)
 
-    print(common_items)
+    print(unique_item_count)
 
 
 if __name__ == "__main__":
