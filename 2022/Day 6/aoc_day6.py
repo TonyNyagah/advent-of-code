@@ -1,27 +1,27 @@
-lst = "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg"
-lst = list(lst)
+def getData(txt_file) -> list:
+    """Get a string from a text file."""
+    with open(txt_file, "r") as f:
+        data = f.read()
+
+    return data
 
 
-def sliding_window(elements, window_size):
+def sliding_window(string: str, window_size: int):
 
-    list_of_lists = []
-    closest_to_marker = 0
-
-    if len(elements) <= window_size:
-        return elements
-
-    for i in range(len(elements) - window_size + 1):
-        current_window = elements[i : i + window_size]
-        list_of_lists.append(current_window)
-
-    for n in list_of_lists:
-        if len(set(n)) == len(n):
-            closest_to_marker = list_of_lists.index(n)
-            break
-
-    marker = list_of_lists[closest_to_marker + 1][0]
-
-    return list_of_lists, closest_to_marker, marker
+    for i in range(len(string) - window_size + 1):
+        current_window = string[i : i + window_size]
+        if len(set(current_window)) == len(current_window):
+            # print(current_window)
+            return i + window_size
 
 
-print(sliding_window(lst, 4))
+def main():
+    data = getData("aoc_day6_input.txt")
+
+    print
+    print(f"Part 1: {sliding_window(data, 4)}")
+    print(f"Part 2: {sliding_window(data, 14)}")
+
+
+if __name__ == "__main__":
+    main()
