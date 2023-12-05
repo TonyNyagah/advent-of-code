@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 	"unicode"
 )
 
@@ -54,9 +55,20 @@ func PartTwo(fileName string) {
 
 func PartTwoPractice(fileName string) {
 	// look for the word two and nine in the string I give you
+	//given string
+	str := "hellofromeducative"
 
+	//given substring
+	substr := "educative"
+
+	//check if str contains substr
+	isContains := strings.Contains(str, substr)
+
+	//print the result
+	fmt.Println(isContains)
 }
 
 func main() {
 	PartOne("aoc_day1_input.txt")
+	PartTwoPractice()
 }
