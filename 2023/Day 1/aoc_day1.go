@@ -9,7 +9,7 @@ import (
 	"unicode"
 )
 
-func partOne(fileName string) {
+func PartOne(fileName string) {
 	file, err := os.Open(fileName)
 	if err != nil {
 		log.Fatal(err)
@@ -21,6 +21,7 @@ func partOne(fileName string) {
 
 	for scanner.Scan() {
 		line := scanner.Text()
+		// fmt.Println(line)
 		firstDigit, lastDigit := "", ""
 		for _, r := range line {
 			if unicode.IsDigit(r) {
@@ -28,6 +29,7 @@ func partOne(fileName string) {
 					firstDigit = string(r)
 				}
 				lastDigit = string(r)
+				// fmt.Println(firstDigit, lastDigit)
 			}
 		}
 		if firstDigit != "" && lastDigit != "" {
@@ -42,7 +44,7 @@ func partOne(fileName string) {
 	fmt.Println("The sum of all calibration values is:", sum)
 }
 
-func partTwo(fileName string) {
+func PartTwo(fileName string) {
 	file, err := os.Open(fileName)
 	if err != nil {
 		log.Fatal(err)
@@ -50,6 +52,11 @@ func partTwo(fileName string) {
 	defer file.Close()
 }
 
+func PartTwoPractice(fileName string) {
+	// look for the word two and nine in the string I give you
+
+}
+
 func main() {
-	partOne("aoc_day1_input.txt")
+	PartOne("aoc_day1_input.txt")
 }
