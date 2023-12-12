@@ -7,10 +7,12 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	// "strings"
 	"unicode"
 )
 
-func PartOne(fileName string) {
+func ScanText(fileName string) []string {
 	file, err := os.Open(fileName)
 	if err != nil {
 		log.Fatal(err)
@@ -18,19 +20,32 @@ func PartOne(fileName string) {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-	sum := 0
+	wordSlice := []string{}
 
 	for scanner.Scan() {
 		line := scanner.Text()
-		// fmt.Println(line)
+		wordSlice = append(wordSlice, line)
+	}
+
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	return wordSlice
+}
+
+func PartOne(fileName string) {
+	wordSlice := ScanText(fileName)
+	sum := 0
+
+	for _, word := range wordSlice {
 		firstDigit, lastDigit := "", ""
-		for _, r := range line {
+		for _, r := range word {
 			if unicode.IsDigit(r) {
 				if firstDigit == "" {
 					firstDigit = string(r)
 				}
 				lastDigit = string(r)
-				// fmt.Println(firstDigit, lastDigit)
 			}
 		}
 		if firstDigit != "" && lastDigit != "" {
@@ -38,37 +53,55 @@ func PartOne(fileName string) {
 			sum += calibrationValue
 		}
 	}
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
 
 	fmt.Println("The sum of all calibration values is:", sum)
 }
 
 func PartTwo(fileName string) {
-	file, err := os.Open(fileName)
-	if err != nil {
-		log.Fatal(err)
+	wordSlice := ScanText(fileName)
+	// sum := 0
+
+	numMap := map[string]int{
+		"one":   1,
+		"two":   2,
+		"three": 3,
+		"four":  4,
+		"five":  5,
+		"six":   6,
+		"seven": 7,
+		"eight": 8,
+		"nine":  9,
 	}
-	defer file.Close()
+
+	for key, value := range numMap {
+		for _, word := range wordSlice {
+			if strings.Contains(word, key) {
+				fmt.Println(value)
+				if firstDigit == "" {
+					firstDigit = string(r)
+				}
+			}
+		}
+		fmt.Println("========================")
+	}
 }
 
-func PartTwoPractice(fileName string) {
-	// look for the word two and nine in the string I give you
-	//given string
-	str := "hellofromeducative"
+// func PartTwoPractice(fileName string) {
+// 	// look for the word two and nine in the string I give you
+// 	//given string
+// 	str := "hellofromeducative"
 
-	//given substring
-	substr := "educative"
+// 	//given substring
+// 	substr := "educative"
 
-	//check if str contains substr
-	isContains := strings.Contains(str, substr)
+// 	//check if str contains substr
+// 	isContains := strings.Contains(str, substr)
 
-	//print the result
-	fmt.Println(isContains)
-}
+// 	//print the result
+// 	fmt.Println(isContains)
+// }
 
 func main() {
 	PartOne("aoc_day1_input.txt")
-	PartTwoPractice()
+	PartTwo("aoc_day1_test.txt")
 }
