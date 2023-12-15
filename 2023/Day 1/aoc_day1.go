@@ -5,11 +5,10 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
-
 	// "strings"
-	"unicode"
 )
 
 func ScanText(fileName string) []string {
@@ -34,74 +33,47 @@ func ScanText(fileName string) []string {
 	return wordSlice
 }
 
-func PartOne(fileName string) {
-	wordSlice := ScanText(fileName)
+func Calibration(dataSlice []string) int {
 	sum := 0
+	re := regexp.MustCompile("[0-9]+")
+	digitSlice := []int{}
 
-	for _, word := range wordSlice {
-		firstDigit, lastDigit := "", ""
-		for _, r := range word {
-			if unicode.IsDigit(r) {
-				if firstDigit == "" {
-					firstDigit = string(r)
-				}
-				lastDigit = string(r)
-			}
-		}
-		if firstDigit != "" && lastDigit != "" {
-			calibrationValue, _ := strconv.Atoi(firstDigit + lastDigit)
-			sum += calibrationValue
-		}
+	for _, word := range dataSlice {
+		result := re.FindAllString(word, -1)
+		merged := strings.Join(result, "")
+		split := strings.Split(merged, "")
+		digit, _ := strconv.Atoi(split[0] + split[len(split)-1])
+		digitSlice = append(digitSlice, digit)
 	}
 
-	fmt.Println("The sum of all calibration values is:", sum)
+	for _, number := range digitSlice {
+		sum += number
+	}
+
+	return sum
 }
-
-func PartTwo(fileName string) {
-	wordSlice := ScanText(fileName)
-	// sum := 0
-
-	numMap := map[string]int{
-		"one":   1,
-		"two":   2,
-		"three": 3,
-		"four":  4,
-		"five":  5,
-		"six":   6,
-		"seven": 7,
-		"eight": 8,
-		"nine":  9,
-	}
-
-	for key, value := range numMap {
-		for _, word := range wordSlice {
-			if strings.Contains(word, key) {
-				fmt.Println(value)
-				if firstDigit == "" {
-					firstDigit = string(r)
-				}
-			}
-		}
-		fmt.Println("========================")
-	}
-}
-
-// func PartTwoPractice(fileName string) {
-// 	// look for the word two and nine in the string I give you
-// 	//given string
-// 	str := "hellofromeducative"
-
-// 	//given substring
-// 	substr := "educative"
-
-// 	//check if str contains substr
-// 	isContains := strings.Contains(str, substr)
-
-// 	//print the result
-// 	fmt.Println(isContains)
-// }
 
 func main() {
-	PartOne("aoc_day1_input.txt")
-	PartTwo("aoc_day1_test.txt")
+	dataSlice := ScanText("aoc_day1_input.txt")
+	replacements := map[string]string{
+		"one":   "one1one",
+		"two":   "two2two",
+		"three": "three3three",
+		"four":  "four4four",
+		"five":  "five5five",
+		"six":   "six6six",
+		"seven": "seven7seven",
+		"eight": "eight8eight",
+		"nine":  "nine9nine",
+	}
+
+	fmt.Println("Part 1: ", Calibration(dataSlice))
+
+	for i, _ := range dataSlice {
+		for old, new := range replacements {
+			dataSlice[i] = strings.ReplaceAll(dataSlice[i], old, new)
+		}
+	}
+
+	fmt.Println("Part 2: ", Calibration(dataSlice))
 }
