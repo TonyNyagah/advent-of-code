@@ -69,7 +69,7 @@ func main() {
 
 	fmt.Println("Part 1: ", Calibration(dataSlice))
 
-	for i, _ := range dataSlice {
+	for i := range dataSlice {
 		for old, new := range replacements {
 			dataSlice[i] = strings.ReplaceAll(dataSlice[i], old, new)
 		}
